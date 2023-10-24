@@ -73,4 +73,8 @@ Encore
     //.autoProvidejQuery()
 ;
 
+/* if(!Encore.isProduction){
+    Encore.disableCssExtraction;
+}
+ */
 module.exports = Encore.getWebpackConfig();

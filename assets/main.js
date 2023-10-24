@@ -1,13 +1,7 @@
-import Vue from 'vue';
+import Vue from 'vue'
+import App from './pages/maquinas.vue'
 
 new Vue ({
-    el: '#app',
-    data(){
-
-        return {
-            firstName: 'Pepe',
-        }
-
-    },
-    template: '<h1> Hello {{ firstName }}! Is this cooler?'
-})
+    render:(h) =>  h(App)    
+    
+}).$mount('#app');
