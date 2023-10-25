@@ -15,13 +15,13 @@ class RecaudacionesController extends AbstractController
     #[Route('recaudaciones', name: 'app_recaudaciones_list', methods: ['GET'])]
     public function list(EntityManagerInterface $entityManager): JsonResponse
     {
-        $recaudacion = $entityManager->getRepository(Maquinas::class)->findAll();
+        $recaudaciones = $entityManager->getRepository(Recaudaciones::class)->findAll();
 
-        if (empty($recaudacion)) {
+        if (empty($recaudaciones)) {
             return new JsonResponse(['message' => 'No se encontraron maquinas'], JsonResponse::HTTP_NOT_FOUND);
         }
 
-        $maquinasData = [];
+        $reacudacionesData = [];
         foreach ($recaudaciones as $recaudacion) {
             $recaudacionesData[] = $recaudacion->toArray();
         }

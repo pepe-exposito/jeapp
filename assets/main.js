@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import App from './pages/maquinas.vue'
+import App from './pages/dashboard.vue'
 
 new Vue ({
     render:(h) =>  h(App)    

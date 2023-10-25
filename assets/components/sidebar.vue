@@ -1,9 +1,14 @@
 <template>
     <div>
         <ul>
-            <li v-for="category in categories">
+            <!-- <li v-for="category in categories">
                 <a :href="category.link"> {{ category.name }} </a>
-            </li>
+            </li> -->
+            <li> <a href="#" @click="navigateTo('clientes')"> Clientes </a></li>
+            <li><a href="#" @click="navigateTo('maquinas')"> Maquinas </a></li>
+            <li><a href="#" @click="navigateTo('videos')"> Videos </a></li>
+            <li><a href="#" @click="navigateTo('recaudaciones')"> Recaudaciones </a></li>
+            
         </ul>
     </div>
 </template>
@@ -33,12 +38,14 @@
                     }
                 ]
             }
-        }
+        },
+        methods: {
+            navigateTo(componentName) {
+                this.$emit('navigate', componentName);
+            },
+        },
     }
 </script>
     
 <style scoped>
-    ul{
-        background-color: green;
-    }
 </style>
