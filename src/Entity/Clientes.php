@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ClientesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ClientesRepository::class)]
@@ -21,6 +23,14 @@ class Clientes
 
     #[ORM\Column(length: 9)]
     private ?string $dni = null;
+
+    #[ORM\ManyToMany(targetEntity: Maquinas::class, mappedBy: 'cliente_id')]
+    private Collection $maquinas_id;
+
+    public function __construct()
+    {
+        $this->maquinas_id = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -72,5 +82,32 @@ class Clientes
             'dni' => $this->getDni(),
             // Add more properties as needed
         ];
+    }
+
+    /**
+     * @return Collection<int, Maquinas>
+     */
+    public function getMaquinasId(): Collection
+    {
+        return $this->maquinas_id;
+    }
+
+    public function addMaquinasId(Maquinas $maquinasId): static
+    {
+        if (!$this->maquinas_id->contains($maquinasId)) {
+            $this->maquinas_id->add($maquinasId);
+            $maquinasId->addClienteId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMaquinasId(Maquinas $maquinasId): static
+    {
+        if ($this->maquinas_id->removeElement($maquinasId)) {
+            $maquinasId->removeClienteId($this);
+        }
+
+        return $this;
     }
 }

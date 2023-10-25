@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\RecaudacionesRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
 
 #[ORM\Entity(repositoryClass: RecaudacionesRepository::class)]
 class Recaudaciones
@@ -30,9 +31,9 @@ class Recaudaciones
         return $this->fecha;
     }
 
-    public function setFecha(\DateTimeInterface $fecha): static
+    public function setFecha(): static
     {
-        $this->fecha = $fecha;
+        $this->fecha = new DateTime("now");
 
         return $this;
     }
@@ -47,5 +48,14 @@ class Recaudaciones
         $this->cantidad = $cantidad;
 
         return $this;
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->id,
+            'fecha' => $this->fecha,
+            'cantidad' => $this->cantidad
+        ];
     }
 }

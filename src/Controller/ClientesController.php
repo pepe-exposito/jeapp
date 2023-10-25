@@ -13,6 +13,7 @@ use App\Entity\Clientes;
 class ClientesController extends AbstractController
 {
 
+
     #[Route('clientes', name: 'app_clientes_list', methods: ['GET'])]
     public function list(EntityManagerInterface $entityManager): JsonResponse
     {

@@ -16,7 +16,7 @@ import LegendComponent from './legend.vue'
             LegendComponent,
         },
         data: () => ({
-            legend: 'Esto es la leyenda como tu'
+            legend: 'TODO contenido reactivo'
         }),
     }
 

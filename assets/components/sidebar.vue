@@ -16,15 +16,19 @@
             return {
                 categories: [
                     {
-                        name: 'inicio',
+                        name: 'clientes',
                         link: '#'
                     },
                     {
-                        name: 'registro',
+                        name: 'maquinas',
                         link: '#'
                     },
                     {
-                        name: 'update',
+                        name: 'recaudaciones',
+                        link: '#'
+                    },
+                    {
+                        name: 'videos',
                         link: '#'
                     }
                 ]

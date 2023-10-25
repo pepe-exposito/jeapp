@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\VideosRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
 
 #[ORM\Entity(repositoryClass: VideosRepository::class)]
 class Videos
@@ -19,6 +20,10 @@ class Videos
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
     private ?\DateTimeInterface $duracion = null;
+
+    public function __construct(){
+        
+    }
 
     public function getId(): ?int
     {
@@ -42,10 +47,19 @@ class Videos
         return $this->duracion;
     }
 
-    public function setDuracion(\DateTimeInterface $duracion): static
+    public function setDuracion(): static
     {
-        $this->duracion = $duracion;
+        $this->duracion = new DateTime("now");
 
         return $this;
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->id,
+            'nombre' => $this->nombre,
+            'duracion' => $this->duracion !== null ? $this->duracion->format('H:i:s') : null,
+        ];
     }
 }
