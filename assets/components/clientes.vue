@@ -1,13 +1,13 @@
 <template>
     <div>
         <div class="row">
+            <router-link to="/cliente/create">Create New Client</router-link>
             <ul>
                 <li v-for="cliente in clientes" :key="cliente.id">
-                    {{ cliente.nombre }} - {{ cliente.apellido }}
+                    Nombre: {{ cliente.nombre }} | Apellido: {{ cliente.apellido }} | DNI: {{ cliente.dni }}
                 </li>
             </ul>
         </div>
-        <div><h1>clientes</h1></div>
         <LegendComponent :title="legend"/>
     </div>
 </template>
@@ -34,4 +34,19 @@ import LegendComponent from './legend.vue'
 </script>
 
 <style>
+
+    .row{
+        display: block;
+        justify-content: center;
+        align-items: center;
+    }
+
+    ul{
+    }
+
+    li{
+        border: 1px grey solid;
+        list-style: none;
+    }
+
 </style>

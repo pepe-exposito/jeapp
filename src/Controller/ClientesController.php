@@ -14,7 +14,7 @@ class ClientesController extends AbstractController
 {
 
 
-    #[Route('api/clientes', name: 'app_clientes_list', methods: ['GET'])]
+    #[Route('clientes', name: 'app_clientes_list', methods: ['GET'])]
     public function list(EntityManagerInterface $entityManager): JsonResponse
     {
         $clientes = $entityManager->getRepository(Clientes::class)->findAll();
@@ -31,7 +31,7 @@ class ClientesController extends AbstractController
         return new JsonResponse(['message' => 'Clientes encontrados', 'clientes' => $clientesData], JsonResponse::HTTP_OK);
     }
 
-    #[Route('api/clientes/create', name: 'app_clientes_create', methods: ['POST'])]
+    #[Route('clientes/create', name: 'app_clientes_create', methods: ['POST'])]
     public function create(Request $request, EntityManagerInterface $entityManager): JsonResponse
     {
         $data = json_decode($request->getContent(), true);
@@ -39,6 +39,8 @@ class ClientesController extends AbstractController
         $cliente->setNombre($data['nombre']);
         $cliente->setApellido($data['apellido']);
         $cliente->setDni($data['dni']);
+        $cliente->setEmail($data['email']);
+        $cliente->setPassword($data['password']);
 
         if(!$cliente){
             return new JsonResponse(['message' => 'El cliente no ha sido creado', 'cliente']); 
@@ -50,7 +52,7 @@ class ClientesController extends AbstractController
         return new JsonResponse(['message' => 'Cliente creado', 'cliente' => $cliente->toArray()], JsonResponse::HTTP_CREATED); 
     }
 
-    #[Route('api/clientes/show/{id}', name: 'app_clientes_get', methods: ['GET'])]
+    #[Route('clientes/show/{id}', name: 'app_clientes_get', methods: ['GET'])]
     public function show(int $id, EntityManagerInterface $entityManager): JsonResponse
     {
         $cliente = $entityManager->getRepository(Clientes::class)->find($id);
@@ -62,7 +64,7 @@ class ClientesController extends AbstractController
         return new JsonResponse(['message' => 'Cliente encontrado', 'cliente' => $cliente->toArray()], JsonResponse::HTTP_OK);
     }
 
-    #[Route('api/clientes/update/{id}', name: 'app_clientes_update', methods: ['PUT'])]
+    #[Route('clientes/update/{id}', name: 'app_clientes_update', methods: ['PUT'])]
     public function update(int $id, Request $request, EntityManagerInterface $entityManager): JsonResponse
     {
         $cliente = $entityManager->getRepository(Clientes::class)->find($id);
@@ -87,7 +89,7 @@ class ClientesController extends AbstractController
         return new JsonResponse(['message' => 'Cliente actualizado', 'cliente' => $cliente->toArray()], JsonResponse::HTTP_OK);
     }
 
-    #[Route('api/clientes/delete/{id}', name: 'app_clientes_delete', methods: ['DELETE'])]
+    #[Route('clientes/delete/{id}', name: 'app_clientes_delete', methods: ['DELETE'])]
     public function delete(int $id, EntityManagerInterface $entityManager): JsonResponse
     {
         $cliente = $entityManager->getRepository(Clientes::class)->find($id);

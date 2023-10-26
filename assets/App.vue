@@ -5,7 +5,7 @@
         <div class = "contenedor" style="display: block;">
             <Sidebar/>    
         </div>
-        <div> 
+        <div class="rv-container"> 
             <router-view/>
         </div>
     </div>
@@ -38,4 +38,9 @@ import Sidebar from './components/sidebar.vue'
         width: 40%;
         justify-content: center;
     }
+
+    .rv-container{
+        background-color: #ECF7BB;
+    }
+    
 </style>
