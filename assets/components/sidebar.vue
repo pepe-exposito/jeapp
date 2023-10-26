@@ -2,27 +2,19 @@
     <div>
         <ul>
             <nav>
-                <li> <a href="#" @click="navigateTo('clientes')"> Clientes </a></li>
-                <li><a href="#" @click="navigateTo('maquinas')"> Maquinas </a></li>
-                <li><a href="#" @click="navigateTo('videos')"> Videos </a></li>
-                <li><a href="#" @click="navigateTo('recaudaciones')"> Recaudaciones </a></li>
+                <router-link to="/clientes">Clientes</router-link>
+                <router-link to="/maquinas">Máquinas</router-link>
+                <router-link to="/videos">Videos</router-link>
+                <router-link to="/recaudaciones">Recaudaciones</router-link>
             </nav>
         </ul>
     </div>
 </template>
 
 <script>
+
     export default {
         name: 'Sidebar',
-        data()
-        {
-            
-        },
-        methods: {
-            navigateTo(componentName) {
-                this.$emit('navigate', componentName);
-            },
-        },
     }
 </script>
     

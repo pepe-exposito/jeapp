@@ -7,7 +7,8 @@
                    Fecha: {{ recaudacion.fecha }} <br> 
                    Cantidad: {{ recaudacion.cantidad }} <br> 
                 </li>
-        </ul>
+                <h1>recaudaciones</h1>
+            </ul>
         </div>
         <LegendComponent :title="legend"/>
     </div>

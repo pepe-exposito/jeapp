@@ -5,8 +5,9 @@
                 <li v-for="cliente in clientes" :key="cliente.id">
                     {{ cliente.nombre }} - {{ cliente.apellido }}
                 </li>
-        </ul>
+            </ul>
         </div>
+        <div><h1>clientes</h1></div>
         <LegendComponent :title="legend"/>
     </div>
 </template>

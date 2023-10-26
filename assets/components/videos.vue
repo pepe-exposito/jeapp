@@ -6,9 +6,9 @@
                    Id: {{ video.id }} <br> 
                    Nombre: {{ video.nombre }} <br> 
                    Duracion: {{ video.duracion }} <br> 
-                   <a href="#"> Ver datos </a>
                 </li>
-        </ul>
+            </ul>
+            <h1>videos</h1>
         </div>
         <LegendComponent :title="legend"/>
     </div>

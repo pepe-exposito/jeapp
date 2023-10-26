@@ -5,7 +5,8 @@
                 <li v-for="maquina in maquinas" :key="maquina.id">
                     {{ maquina.id }} - {{ maquina.nombre }} - {{ maquina.tipo }}
                 </li>
-        </ul>
+            </ul>
+            <h1>Maquinas</h1>
         </div>
         <LegendComponent :title="legend"/>
     </div>
