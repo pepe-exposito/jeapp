@@ -6,6 +6,7 @@
                    Id: {{ video.id }} <br> 
                    Nombre: {{ video.nombre }} <br> 
                    Duracion: {{ video.duracion }} <br> 
+                   <a href="#"> Ver datos </a>
                 </li>
         </ul>
         </div>
@@ -36,8 +37,8 @@ import LegendComponent from './legend.vue'
 
 </script>
 
-<style>
-    li{
+<style scoped>
+    .row{
         background-color: red;
     }
 </style>

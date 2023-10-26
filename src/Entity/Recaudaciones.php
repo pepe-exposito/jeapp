@@ -58,4 +58,5 @@ class Recaudaciones
             'cantidad' => $this->cantidad
         ];
     }
+
 }

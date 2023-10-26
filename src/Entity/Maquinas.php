@@ -21,12 +21,9 @@ class Maquinas
     #[ORM\Column]
     private ?int $tipo = null;
 
-    #[ORM\ManyToMany(targetEntity: Clientes::class, inversedBy: 'maquinas_id')]
-    private Collection $cliente_id;
 
     public function __construct()
     {
-        $this->cliente_id = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -58,42 +55,14 @@ class Maquinas
         return $this;
     }
 
-    /**
-     * @return Collection<int, Clientes>
-     */
-    public function getClienteId(): Collection
-    {
-        return $this->cliente_id;
-    }
-
-    public function addClienteId(Clientes $clienteId): static
-    {
-        if (!$this->cliente_id->contains($clienteId)) {
-            $this->cliente_id->add($clienteId);
-        }
-
-        return $this;
-    }
-
-    public function removeClienteId(Clientes $clienteId): static
-    {
-        $this->cliente_id->removeElement($clienteId);
-
-        return $this;
-    }
-
     public function toArray(): array
     {
-        $clientesArray = [];
-        foreach ($this->cliente_id as $cliente) {
-            $clientesArray[] = $cliente->toArray();
-        }
 
         return [
             'id' => $this->id,
             'nombre' => $this->nombre,
             'tipo' => $this->tipo,
-            'clientes' => $clientesArray,
         ];
     }
+
 }

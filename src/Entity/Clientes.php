@@ -27,6 +27,12 @@ class Clientes
     #[ORM\ManyToMany(targetEntity: Maquinas::class, mappedBy: 'cliente_id')]
     private Collection $maquinas_id;
 
+    #[ORM\Column(length: 50)]
+    private ?string $email = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $password = null;
+
     public function __construct()
     {
         $this->maquinas_id = new ArrayCollection();
@@ -107,6 +113,30 @@ class Clientes
         if ($this->maquinas_id->removeElement($maquinasId)) {
             $maquinasId->removeClienteId($this);
         }
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): static
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): static
+    {
+        $this->password = $password;
 
         return $this;
     }
