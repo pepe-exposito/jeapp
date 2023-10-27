@@ -24,9 +24,6 @@ class Clientes
     #[ORM\Column(length: 9)]
     private ?string $dni = null;
 
-    #[ORM\ManyToMany(targetEntity: Maquinas::class, mappedBy: 'cliente_id')]
-    private Collection $maquinas_id;
-
     #[ORM\Column(length: 50)]
     private ?string $email = null;
 
@@ -35,7 +32,6 @@ class Clientes
 
     public function __construct()
     {
-        $this->maquinas_id = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -88,33 +84,6 @@ class Clientes
             'dni' => $this->getDni(),
             'email' => $this->getEmail(),
         ];
-    }
-
-    /**
-     * @return Collection<int, Maquinas>
-     */
-    public function getMaquinasId(): Collection
-    {
-        return $this->maquinas_id;
-    }
-
-    public function addMaquinasId(Maquinas $maquinasId): static
-    {
-        if (!$this->maquinas_id->contains($maquinasId)) {
-            $this->maquinas_id->add($maquinasId);
-            $maquinasId->addClienteId($this);
-        }
-
-        return $this;
-    }
-
-    public function removeMaquinasId(Maquinas $maquinasId): static
-    {
-        if ($this->maquinas_id->removeElement($maquinasId)) {
-            $maquinasId->removeClienteId($this);
-        }
-
-        return $this;
     }
 
     public function getEmail(): ?string

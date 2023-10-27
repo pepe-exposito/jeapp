@@ -86,9 +86,9 @@ class RecaudacionesController extends AbstractController
     #[Route('recaudaciones/delete/{id}', name: 'app_recaudaciones_delete', methods: ['DELETE'])]
     public function delete(int $id, EntityManagerInterface $entityManager): JsonResponse
     {
-        $recaudaciones = $entityManager->getRepository(Recaudaciones::class)->find($id);
+        $recaudacion = $entityManager->getRepository(Recaudaciones::class)->find($id);
 
-        if (!$recaudaciones) {
+        if (!$recaudacion) {
             return new JsonResponse(['message' => 'Recaudacion no encontrada'], JsonResponse::HTTP_NOT_FOUND);
         }
 
