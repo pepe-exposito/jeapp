@@ -86,7 +86,7 @@ class Clientes
             'nombre' => $this->getNombre(),
             'apellido' => $this->getApellido(),
             'dni' => $this->getDni(),
-            // Add more properties as needed
+            'email' => $this->getEmail(),
         ];
     }
 

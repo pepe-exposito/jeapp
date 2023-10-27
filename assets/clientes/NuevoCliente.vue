@@ -50,7 +50,6 @@ export default {
                 console.log('Cliente creado:', response.data);
                 this.$router.push('/clientes'); 
             } catch (error) {
-                /* console.error('Error en la creación del cliente:', error); */
                 if (error.response) {
                     console.error('Error en la respuesta del servidor:', error.response.data);
                 } else {

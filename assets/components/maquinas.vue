@@ -1,29 +1,26 @@
 <template>
     <div>
         <div class="row">
+            <router-link to="/maquinas/create">Crear máquina</router-link>
             <ul>
                 <li v-for="maquina in maquinas" :key="maquina.id">
                     {{ maquina.id }} - {{ maquina.nombre }} - {{ maquina.tipo }}
+                    <router-link :to="'/maquinas/show/' + maquina.id"> Mostrar </router-link>
+                    <router-link :to="'/maquinas/delete/' + maquina.id"> Borrar </router-link>
                 </li>
             </ul>
             <h1>Maquinas</h1>
         </div>
-        <LegendComponent :title="legend"/>
     </div>
 </template>
 
 <script>
 import axios from 'axios';
-import LegendComponent from './legend.vue'
 
     export default {
         name: 'Maquinas',
-        components:{
-            LegendComponent,
-        },
         data: () => ({
             maquinas: [],
-            legend: 'TODO contenido reactivo'
         }),
         async mounted () {
             const response = await axios.get('/maquinas');
