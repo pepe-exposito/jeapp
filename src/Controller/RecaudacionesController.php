@@ -70,11 +70,11 @@ class RecaudacionesController extends AbstractController
 
         $data = json_decode($request->getContent(), true);
 
-        if (!isset($data['nombre'])) {
+        if (!isset($data['cantidad'])) {
             return new JsonResponse(['message' => 'Los campos requeridos no están presentes en los datos'], JsonResponse::HTTP_BAD_REQUEST);
         }
 
-        $recaudacion->setFecha($data['fecha']);
+        $recaudacion->setFecha();
         $recaudacion->setCantidad($data['cantidad']);
 
         $entityManager->persist($recaudacion);

@@ -60,7 +60,7 @@ const routes = [
     name: 'cliente_show'
     },
     {
-    path: '/clientes/update',
+    path: '/clientes/update/:id',
     component: ModificarCliente,
     name: 'modificar_cliente'
     },
@@ -80,7 +80,7 @@ const routes = [
     name: 'maquina_show'
     },
     {
-    path: '/maquinas/update',
+    path: '/maquinas/update/:id',
     component: ModificarMaquina,
     name: 'modificar_maquina'
     },
@@ -100,7 +100,7 @@ const routes = [
     name: 'video_show'
     },
     {
-    path: '/videos/update',
+    path: '/videos/update/:id',
     component: ModificarVideo,
     name: 'modificar_video'
     },
@@ -121,7 +121,7 @@ const routes = [
     name: 'recaudacion_show'
     },
     {
-    path: '/recaudaciones/update',
+    path: '/recaudaciones/update/:id',
     component: ModificarRecaudacion,
     name: 'modificar_recaudacion'
     },

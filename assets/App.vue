@@ -35,7 +35,7 @@ import Sidebar from './components/Sidebar.vue'
         margin-inline: auto;
         background-color: #c7e7af;
         text-align: center;
-        width: 40%;
+        width: 50%;
         justify-content: center;
     }
 

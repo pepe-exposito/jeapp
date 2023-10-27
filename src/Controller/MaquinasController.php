@@ -77,7 +77,7 @@ class MaquinasController extends AbstractController
         $maquina->setNombre($data['nombre']);
         $maquina->setTipo($data['tipo']);
 
-        $entityManager->persist($maquinas);
+        $entityManager->persist($maquina);
         $entityManager->flush();
 
         return new JsonResponse(['message' => 'Maquina actualizada', 'maquina' => $maquina->toArray()], JsonResponse::HTTP_OK);
