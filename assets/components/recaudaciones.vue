@@ -19,7 +19,8 @@
                                 {{ recaudacion.id }}
                             </th>
                             <th>
-                                {{ recaudacion.fecha }}
+                                {{ new Date (recaudacion.fecha.date).toLocaleString('es-Es', 
+                                {year: "numeric", month: "2-digit", day: "2-digit",}) }}
                             </th>
                             <th>
                                 {{ recaudacion.cantidad }}
@@ -54,4 +55,53 @@ import axios from 'axios';
 </script>
 
 <style>
+    .row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .table-container {
+        width: 80%;
+        margin: 20px;
+        justify-content: center;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border-spacing: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    table th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    table th, table td {
+        padding: 10px;
+        text-align: left;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    table tr:hover {
+        background-color: #d9d9d9;
+    }
+
+    table a {
+        text-decoration: none;
+        margin: 0 5px;
+        color: #007BFF;
+    }
+
+    .router-link-exact-active {
+        font-weight: bold;
+        color: #0056b3;
+    }
 </style>

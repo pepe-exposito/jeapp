@@ -1,6 +1,6 @@
 <template>
     <div class="main-container" style="display: block;">
-        <h1> Hello {{ firstName }}! This is an API page </h1>
+        <h1> Hello {{ firstName }}! This is an example page </h1>
 
         <div class = "contenedor" style="display: block;">
             <Sidebar/>    

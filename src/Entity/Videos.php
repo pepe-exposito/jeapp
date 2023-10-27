@@ -49,7 +49,11 @@ class Videos
 
     public function setDuracion(): static
     {
-        $this->duracion = new DateTime("now");
+        $timestamp = random_int(0, time());
+        $date = new DateTime();
+        $date->setTimestamp($timestamp);
+
+        $this->duracion = $date;
 
         return $this;
     }
