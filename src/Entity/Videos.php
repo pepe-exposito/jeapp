@@ -21,6 +21,10 @@ class Videos
     #[ORM\Column(type: Types::TIME_MUTABLE)]
     private ?\DateTimeInterface $duracion = null;
 
+    #[ORM\ManyToOne(inversedBy: 'videos')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Maquinas $maquina = null;
+
     public function __construct(){
         
     }
@@ -65,5 +69,17 @@ class Videos
             'nombre' => $this->nombre,
             'duracion' => $this->duracion !== null ? $this->duracion->format('H:i:s') : null,
         ];
+    }
+
+    public function getMaquina(): ?Maquinas
+    {
+        return $this->maquina;
+    }
+
+    public function setMaquina(?Maquinas $maquina): static
+    {
+        $this->maquina = $maquina;
+
+        return $this;
     }
 }

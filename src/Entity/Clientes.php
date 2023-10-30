@@ -30,8 +30,12 @@ class Clientes
     #[ORM\Column(length: 50)]
     private ?string $password = null;
 
+    #[ORM\ManyToMany(targetEntity: Maquinas::class, inversedBy: 'clientes')]
+    private Collection $maquinas;
+
     public function __construct()
     {
+        $this->maquinas = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -106,6 +110,30 @@ class Clientes
     public function setPassword(string $password): static
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Maquinas>
+     */
+    public function getMaquinas(): Collection
+    {
+        return $this->maquinas;
+    }
+
+    public function addMaquina(Maquinas $maquina): static
+    {
+        if (!$this->maquinas->contains($maquina)) {
+            $this->maquinas->add($maquina);
+        }
+
+        return $this;
+    }
+
+    public function removeMaquina(Maquinas $maquina): static
+    {
+        $this->maquinas->removeElement($maquina);
 
         return $this;
     }

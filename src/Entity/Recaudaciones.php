@@ -21,6 +21,10 @@ class Recaudaciones
     #[ORM\Column]
     private ?int $cantidad = null;
 
+    #[ORM\OneToOne(inversedBy: 'recaudacion', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Maquinas $maquina = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -57,6 +61,18 @@ class Recaudaciones
             'fecha' => $this->fecha,
             'cantidad' => $this->cantidad
         ];
+    }
+
+    public function getMaquina(): ?Maquinas
+    {
+        return $this->maquina;
+    }
+
+    public function setMaquina(Maquinas $maquina): static
+    {
+        $this->maquina = $maquina;
+
+        return $this;
     }
 
 }
